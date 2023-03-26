@@ -1,0 +1,287 @@
+1)define a class currentaccount(accno,name,balance,minbalance) define appropriate constructors and operations withdraw(),deposte(),viewbalance()
+create an object and performance operations
+class  CurrentAccount(accno: Int ,nm: String, bal:Int, minBal:Int)
+{  
+      	var accNo:Int= accno; 
+      	var name:String=nm
+      	var balance:Int=bal;
+      	var minBalance:Int=minBal;
+   	def withdraw(amount:Int)
+        {
+         	if((balance-amount)<minBalance)
+          		println("Insufficient balance to withdraw ")
+         	else
+          		balance-=amount
+          		println("Current Balance = "+balance);
+        }
+    	def deposit(amount:Int)
+        {
+        	 balance+=amount
+           	println("Current Balance = "+balance);
+        }
+    	def viewBalance()
+        {
+           	println("Current Available Balance = "+balance);
+        }
+}
+ 
+object mainObject
+{
+    	def main(args:Array[String])
+    	{    
+      		var b=new CurrentAccount(1,"Ram",5000,500)
+      		var choice:Int=0
+          	println("WELCOME.....")
+      		do
+          	{
+           		println("1: WITHDRAW\n2:DEPOSIT\n3:VIEW BALANCE\n4:EXIT")
+           		println("Enter your choice : ");
+           		choice=scala.io.StdIn.readInt
+        		var amount:Int=0
+           		choice match
+           		{
+        			case 1 => print("Enter the amount to withdraw : ")
+          			amount=scala.io.StdIn.readInt()
+          			b.withdraw(amount)
+        			case 2 => print("Enter the amount to deposit : ")
+          			amount=scala.io.StdIn.readInt()
+          			b.deposit(amount)
+        			case 3 => b.viewBalance()
+        			case 4 => println("Exiting...")
+        			case _ => println("Invalid choice entered, Try again...")
+          		}
+        	}while(choice!=4)
+         }
+}
+
+2)Define a class Employee (id, name, salary). Define methods accept() and display().
+Display details of employee having maximum salary
+class Employee(id:Int, name:String, salary:Double)
+{
+  def accept()
+  {
+    println("Employee ID: "+id)
+    println("Employee Name: "+name)
+    println("Employee Salary: "+salary)
+  }
+  def display()
+  {
+    println("Employee ID: "+id)
+    println("Employee Name: "+name)
+    println("Employee Salary: "+salary)
+  }
+}
+
+object Employee
+{
+  def getMaxSalaryEmployee(employees:Array[Employee]):Employee=
+  {
+    var maxSalaryEmployee = employees(0)
+    for(employee <- employees)
+    {
+      maxSalaryEmployee = employee
+    }
+    return maxSalaryEmployee
+  }
+  def main(args: Array[String]) {
+    val emp1 = new Employee(1, "John", 10000)
+    val emp2 = new Employee(2, "Smith", 15000)
+    val emp3 = new Employee(3, "Peter", 20000)
+    val employees = Array(emp1, emp2, emp3)
+    val maxSalaryEmployee = getMaxSalaryEmployee(employees)
+    println("\nEmployee having maximum salary:")
+    maxSalaryEmployee.display()
+  }
+}
+
+3)Create abstract class Order (id, description). Derive two classes PurchaseOrder&amp; SalesOrder with members Vendor and Customer.
+Create object of each PurchaseOrder and SalesOrder. Display the details of each account. in scala
+abstract class Order(id: Int, description: String)
+class PurchaseOrder(id: Int, description: String, vendor: String) extends Order(id, description)
+{
+  def displayDetails():Unit =
+  {
+    println("Id: " + id)
+    println("Description: " + description)
+    println("Vendor: " + vendor)
+  }
+}
+
+class SalesOrder(id: Int, description: String, customer: String) extends Order(id, description)
+{
+  def displayDetails():Unit = 
+  {
+    println("Id: " + id)
+    println("Description: " + description)
+    println("Customer: " + customer)
+  }
+}
+
+object Main {
+  def main(args: Array[String]):Unit =
+  {
+    val purchaseOrder = new PurchaseOrder(1, "Computer", "Dell")
+    val salesOrder = new SalesOrder(2, "Laptop", "John")
+    println("Purchase Order Details: ")
+    purchaseOrder.displayDetails()
+    println("Sales Order Details: ")
+    salesOrder.displayDetails()
+  }
+}
+
+4)create abstract class shape with abstract functions volume() and display().Extend two classes cube and cylinder from it.
+calculate volume of each and display it
+abstract class shape(r:Int,h:Int)
+{
+  var vol1:Double=0
+  var pi:Double=3.14
+  def volume()
+  def display()
+}
+class cylinder(r:Int,h:Int)extends shape(r,h)
+{
+  def volume()
+  {
+    var vol:Double=0
+    vol=pi*r*r*h
+    vol1=vol
+    println("*****")
+    println("volume is:"+vol)
+  }
+  def display()
+  { println("***")
+    println("radius of cylinder:"+r)
+    println("height of cylinder:"+h)
+    println("volume of cylinder:"+vol1)
+  }
+}
+
+object MainObject{
+  def main(args:Array[String]){
+    var radius:Int=0
+    var height:Int=0
+    println("enter radius of cylinder:")
+    radius=scala.io.StdIn.readInt()
+    println("enter hight of cylinder")
+    height=scala.io.StdIn.readInt()
+    var n=new cylinder(radius,height)
+    n.volume()
+    n.display()
+  }
+}
+
+5)Create class Project (id, name, location). Define parameterized constructor.
+Keep a count of each object created and display the details of each project. in scala
+class Project(id:Int, name:String, location:String)
+{
+  private var count = 0
+  count += 1
+  def displayDetails()
+  {
+    println("Project id: "+id)
+    println("Project Name: "+name)
+    println("Project Location: "+location)
+    println("Total Projects created: "+count)
+  }
+}
+
+object MainObject
+{
+  def main(args:Array[String])
+  {
+    var p1 = new Project(1, "Project1", "Delhi")
+    p1.displayDetails()
+    var p2 = new Project(2, "Project2", "Mumbai")
+    p2.displayDetails()
+  }
+}
+
+6)Define a class Sports (id, name, description, amount). Derive two classes Indoor and Outdoor. 
+Define appropriate constructors and operations. Create an object and perform operations. in scala
+class Sports(id: Int, name: String, description: String, amount: Double)
+{
+  def getId(): Int = this.id
+  def getName(): String = this.name
+  def getDescription(): String = this.description
+  def getAmount(): Double = this.amount
+}
+
+class Indoor(id: Int, name: String, description: String, amount: Double) extends Sports(id, name, description, amount)
+{
+  def play(): Unit = println(" ")
+}
+
+class Outdoor(id: Int, name: String, description: String, amount: Double) extends Sports(id, name, description, amount)
+{
+  def play(): Unit = println(" ")
+}
+
+object Main {
+  def main(args: Array[String]):Unit =
+{
+    val indoor = new Indoor(1,"Badminton", "Racquet sport", 50.0)
+    val outdoor = new Outdoor(2, "Cricket", "Bat and Ball", 100.0)
+    println("Name of indoor game: " + indoor.getName())
+    println("Name of outdoor game: " + outdoor.getName())
+    indoor.play()
+    outdoor.play()
+  }
+}
+
+7)design abstract class employee with computesal() as abstract function.create two subclasses worker and manager.
+salary of worker should be calculated on hourly basis of work and salary of manager should be calculated on monthly basis with additional incentives
+abstract class Employees {
+  def computeSal(): Double
+}
+
+class Worker extends Employees {
+  private var hoursWorked: Double = 0.0
+  private var hourlyWage: Double = 0.0
+
+  def setHoursWorked(hours: Double): Unit = {
+    hoursWorked = hours
+  }
+
+  def setHourlyWage(wage: Double): Unit = {
+    hourlyWage = wage
+  }
+
+  override def computeSal(): Double = {
+    hoursWorked * hourlyWage
+  }
+
+}
+
+class Manager extends Employees {
+
+  private var monthlySalary: Double = 0.0
+  private var incentives: Double = 0.0
+
+  def setMonthlySalary(salary: Double): Unit = {
+    monthlySalary = salary
+  }
+
+  def setIncentives(inc: Double): Unit = {
+    incentives = inc
+  }
+
+  override def computeSal(): Double = {
+    monthlySalary + incentives
+  }
+
+}
+object prog7 {
+  def main(args: Array[String]): Unit = {
+
+    val worker = new Worker
+    worker.setHoursWorked(40)
+    worker.setHourlyWage(15)
+    val workerSalary = worker.computeSal()
+    println("Worker Salary : " + workerSalary)
+    val manager = new Manager
+    manager.setMonthlySalary(5000)
+    manager.setIncentives(1000)
+    val managerSalary = manager.computeSal()
+    println("Manager Salary : " + managerSalary)
+  }
+}
