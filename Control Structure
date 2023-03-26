@@ -1,0 +1,132 @@
+1) calculate avg of all no. between n1 & n2
+object demo
+{
+  def main(args:Array[String])
+  {
+    println("enter first number:")
+    var n1=scala.io.StdIn.readInt();
+    println("enter second number:")
+    var n2=scala.io.StdIn.readInt();
+    var sum=(n1+n2)/2;
+    println("Average is:"+sum)
+  }
+}
+
+2)calculate factorial of numbers
+object demo
+{
+  def main(args:Array[String])
+  {
+  println("enter no. you want to be search:")
+  var n=scala.io.StdIn.readInt();
+  var fact:Int=1;
+  for(i<-1 to n)
+  {
+    fact=fact*i;
+  }
+  println("factorial of " +n+ " is : "+fact);
+ }
+}
+
+3)read five random numbers and check that random numbers perfect or not
+object demo
+{
+  def main(args:Array[String])
+  {
+    println("how many no. you want to be search : ")
+    var n=scala.io.StdIn.readInt();
+    for(a<-1 to n)
+    {
+      println("enter the " +a+ " number is : ")
+      var num=scala.io.StdIn.readInt();
+      var sum:Int=0;
+      var i:Int=1;
+      while(i<=num/2)
+      {
+        if (num%i==0)
+        {
+          sum=sum+i;
+        }
+        i=i+1;
+      }
+      if(sum==num)
+      {
+        println(+num+ " is a prime number ")
+      }
+      else
+      {
+        println(" +num+ " is not a prime number ")
+      }
+    }
+  }
+}
+
+4)find second maximum number of four given numbers
+object demo
+{
+  def main(args:Array[String])
+  {
+    var arr=new Array[Int](4)
+    for(i<-0 to (arr.length-1))
+    {
+      println("enter the numbers : ")
+      arr(i)=scala.io.StdIn.readInt();
+    }
+    var temp:Int=0
+    for(x<-0 to (arr.length-1))
+    {
+      for(y<-x+1 to (arr.length-1))
+      {
+        if(arr(x) < arr(y))
+        {
+        temp=arr(y)
+        arr(y)=arr(x)
+        arr(x)=temp
+        }
+      }  
+    }
+    println("second maximun number is : "+arr(1))
+  }
+}
+
+5)calculate sum of prime numbers between 1 to 100
+object demo
+{
+  def main(args:Array[String])
+  {
+    var primesum:Int=0;
+    for(a<-2 to 100)
+    {
+      var sum:Int=0;
+      for(i<-2 to a)
+      {
+        if(a%i==0)
+        {
+          sum=sum+i
+        }
+      }
+      if(sum==a)
+      {
+        primesum=primesum+a;
+      }
+    }
+    println("sum of prime number 1 to 100 is : "+primesum)
+  }
+}
+
+6)integer from user and convert it to binary and octal using defined functions
+object demo
+{
+  def octal(num:Int):Unit=
+  {
+    printf("ocatal value:%0\n",num)
+  }
+  def main(args:Array[String])
+  {
+    println("enter a number : ")
+    var num=scala.io.StdIn.readInt();
+    var binary=(num).toBinaryString
+    println("binary of " +num+ " is : "+binary)
+    octal(num);
+  }
+}
